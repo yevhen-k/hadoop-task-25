@@ -12,16 +12,26 @@ Split initial text file to 3 files.
 ## Steps
 * use `downloader.py` to download, clean-up and split *ALICE'S ADVENTURES IN WONDERLAND* text
 * if you coding locally you should transfer via ssh files to server which running hadoop:
+
     `scp *.py username@ip-address:~/`
+
     `scp alice_* username@ip-address:~/`
+
 * log in to your server
 * create folder for storing input data:
+
     `hadoop fs -mkdir ~/input`
+
     `hadoop fs -cp alice_* ~/input`
+
 * run hadoop query:
+
     `mapred streaming -input input/ -output output/ -mapper ./mapper.py -reducer ./reducer.py -file mapper.py -file reducer.py -numReduceTasks 3`
+
 * read results:
+
     `hadoop fs -cat ~/output/* | sort -n -k3 -r | head -n20 > result.txt`
+    
     `cat result.txt`
 
 ## Links
