@@ -10,29 +10,46 @@ Use 3 reducers.
 Split initial text file to 3 files.
 
 ## Steps
+
+### Local (Standalone) Mode
+
 * use `downloader.py` to download, clean-up and split *ALICE'S ADVENTURES IN WONDERLAND* text
 * if you coding locally you should transfer via ssh files to server which running hadoop:
 
-    `scp *.py username@ip-address:~/`
+    `$ scp *.py username@ip-address:~/`
 
-    `scp alice_* username@ip-address:~/`
+    `$ scp alice_* username@ip-address:~/`
 
 * log in to your server
 * create folder for storing input data:
 
-    `hadoop fs -mkdir ~/input`
+    `$ hadoop fs -mkdir ~/input`
 
-    `hadoop fs -cp alice_* ~/input`
+    `$ hadoop fs -cp alice_* ~/input`
 
 * run hadoop query:
 
-    `mapred streaming -input input/ -output output/ -mapper ./mapper.py -reducer ./reducer.py -file mapper.py -file reducer.py -numReduceTasks 3`
+    `$ mapred streaming -input input/ -output output/ -mapper ./mapper.py -reducer ./reducer.py -file mapper.py -file reducer.py -numReduceTasks 3`
 
 * read results:
 
-    `hadoop fs -cat ~/output/* | sort -n -k3 -r | head -n20 > result.txt`
+    `$ hadoop fs -cat ~/output/* | sort -n -k3 -r | head -n20 > result.txt`
     
-    `cat result.txt`
+    `$ cat result.txt`
+
+### Pseudo-Distributed Mode
+
+* follow configuration listet [here](https://hadoop.apache.org/docs/r3.1.2/hadoop-project-dist/hadoop-common/SingleCluster.html#Pseudo-Distributed_Operation)
+* fix `Hadoop: start-dfs.sh permission denied` as described [here](https://stackoverflow.com/questions/15211848)
+* fix `start-dfs.sh Error: JAVA_HOME is not set and could not be found` as described [here](https://stackoverflow.com/questions/21533725)
+* run `start-dfs.sh` and check browser at `localhost:9870`
+* run mapreduce and check results:
+
+    `$ mapred streaming -input input/ -output output/ -mapper ./mapper.py -reducer ./reducer.py -file mapper.py -file reducer.py -numReduceTasks 3`
+    
+    `$ hdfs dfs -cat output/* | sort -n -k3 -r | head -n20 > result.txt`
+    
+    `$ cat result.txt`
 
 ## Links
 [1] [Hadoop Single Cluster](https://hadoop.apache.org/docs/r3.1.2/hadoop-project-dist/hadoop-common/SingleCluster.html#Standalone_Operation)
