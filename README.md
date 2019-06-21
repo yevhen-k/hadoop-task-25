@@ -51,9 +51,15 @@ Split initial text file to 3 files.
     
     `$ cat result.txt`
 
+### Pseudo-Distributed Mode. YARN on a Single Node
+* follow configuration listed [here](https://hadoop.apache.org/docs/r3.1.2/hadoop-project-dist/hadoop-common/SingleCluster.html#YARN_on_a_Single_Node)
+
+
 ## Links
 [1] [Hadoop Single Cluster](https://hadoop.apache.org/docs/r3.1.2/hadoop-project-dist/hadoop-common/SingleCluster.html#Standalone_Operation)
 
 [2] [Hadoop Streaming](https://hadoop.apache.org/docs/r3.1.2/hadoop-streaming/HadoopStreaming.html)
 
 [3] [Hadoop File System Shell](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#stat)
+
+[4] [IBM YARN Intro (rus)](https://www.ibm.com/developerworks/ru/library/bd-yarn-intro/index.html)
