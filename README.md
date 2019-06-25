@@ -60,6 +60,6 @@ Split initial text file to 3 files.
 
 [2] [Hadoop Streaming](https://hadoop.apache.org/docs/r3.1.2/hadoop-streaming/HadoopStreaming.html)
 
-[3] [Hadoop File System Shell](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#stat)
+[3] [Hadoop File System Shell](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 [4] [IBM YARN Intro (rus)](https://www.ibm.com/developerworks/ru/library/bd-yarn-intro/index.html)

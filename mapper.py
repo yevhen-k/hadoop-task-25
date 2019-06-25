@@ -12,7 +12,8 @@ for line in sys.stdin:
         sentence = sentence.strip()
         words = re.split(r'\s+', sentence)
         for idx in range(len(words) - 1):
-            print('{} {}\t1'.format(words[idx], words[idx+1]))
+            sorted_words = sorted([words[idx], words[idx+1]])
+            print('{}.{}\t1'.format(sorted_words[0], sorted_words[1]))
 
 
 # import sys
